@@ -1,39 +1,15 @@
-
 #Análise 1
 
-
-
-def media_comum (lista):
-    somatorio = 0
-    for i in range (len(lista)):
-        n = lista[i]
-        somatorio = 
-
-        
-
-
-
-
-def media_anos (base):
-    lista_2009 = []
-    lista_2010 = []
-    lista_2011 = []
-    lista_2012 = []
-    lista_2013 = []
-    lista_2014 = []
-    lista_2015 = []
-    lista_2016 = []
-    lista_2017 = []
-    lista_2018 = []
-    lista_2019 = []
-    lista_2020 = []
-    lista_2021 = []
-    lista_2022 = []
-    lista_2023 = []
+def media (base, ano):
+    lista = []
     for i in range (len(base["Ano"])):
-        if (base.at[i, 'Ano']) == 2009:
-            lista_2009.append (base.at[i, 'Quantidade'])
-            media_2009 = base.
+        if (base.at[i, 'Ano']) == ano:
+            lista.append (base.at[i, 'Quantidade'])
+    return lista
+    
+
+#def media_anos (base, ano):
+    
 
     
 
@@ -58,7 +34,8 @@ def main():
 
     print(dados)
 
-    media (dados)
+    ano = int(input("Digite o ano:"))
+    media (dados, ano)
 
 main()
 

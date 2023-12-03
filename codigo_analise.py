@@ -40,7 +40,7 @@ def montante_regiao (base, regiao):
 
 def estado (base):
 
-    lista1 = []
+    lista1 = []    # 1 lista para cada estado, totalizando 26
     lista2 = []
     lista3 = []
     lista4 = []
@@ -66,9 +66,7 @@ def estado (base):
     lista24 = []
     lista25 = []
     lista26 = []
-
-    estados = ['Acre', 'Alagoas', 'Amapá', 'Amazonas', 'Bahia', 'Ceará', 'Espírito Santo', 'Goiás', 'Maranhão', 'Mato Grosso', 'Mato Grosso do Sul', 'Minas Gerais', 'Pará', 'Paraíba', 'Paraná', 'Pernambuco', 'Piauí', 'Rio de Janeiro', 'Rio Grande do Norte', 'Rio Grande do Sul', 'Rondônia', 'Roraima', 'Santa Catarina', 'São Paulo', 'Sergipe', 'Tocantins']
-    
+   
     for i in range (len(base["Estado"])):
             
         if (base.at[i, "Estado"]) == "Acre":
@@ -77,7 +75,7 @@ def estado (base):
         elif (base.at[i, "Estado"]) == "Alagoas":
             lista2.append (base.at[i, 'Quantidade'])
 
-        elif (base.at[i, "Estado"]) == "Amapï¿½":      # As letras que possuiam acento no nome dos estados, houve um erro, onde aparece "�" no lugar da letra, resolvemos o problema substituindo a letra correta por "ï¿½"
+        elif (base.at[i, "Estado"]) == "Amapï¿½":       # As letras que possuem acento apresentaram um erro, onde aparece "�" no lugar da letra, resolvemos o problema substituindo a letra correta por "ï¿½"
             lista3.append (base.at[i, 'Quantidade'])
 
         elif (base.at[i, "Estado"]) == "Amazonas":
@@ -149,15 +147,19 @@ def estado (base):
         else: 
             lista26.append (base.at[i, 'Quantidade'])
 
+    estados = ['Acre', 'Alagoas', 'Amapá', 'Amazonas', 'Bahia', 'Ceará', 'Espírito Santo', 'Goiás', 'Maranhão', 'Mato Grosso', 'Mato Grosso do Sul', 'Minas Gerais', 'Pará', 'Paraíba', 'Paraná', 'Pernambuco', 'Piauí', 'Rio de Janeiro', 'Rio Grande do Norte', 'Rio Grande do Sul', 'Rondônia', 'Roraima', 'Santa Catarina', 'São Paulo', 'Sergipe', 'Tocantins']
+
     lista = [sum(lista1), sum(lista2), sum(lista3), sum(lista4), sum(lista5), sum(lista6), sum(lista7), sum(lista8),sum(lista9), sum(lista10),sum(lista11),sum(lista12),sum(lista13), sum(lista14),sum(lista15),sum(lista16), sum(lista17),sum(lista18),sum(lista19),sum(lista20),sum(lista21),sum(lista22), sum(lista23), sum(lista24),sum(lista25),sum(lista26)]
+    
     minimo = (min(lista))
+
     maximo = (max(lista))
 
     print ("A soma dos valores por estado é:", lista, "seguindo a ordem da lista dos estados", estados,". \n")
     print ()
     print ("O valor mínimo foi de", minimo, "e o máximo foi de", maximo)
 
-        
+# Análise 5 - 
                     
 
 def main():

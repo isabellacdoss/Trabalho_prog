@@ -14,24 +14,30 @@ def media_uni_habitacionais (base, ano):     # mostra a média anual
 
 # Análise 2 - Montante total do valor subsidiano por ano pelo governo 
 
-def montante_ano (base, ano):       # mostra o valor total subsidiado pelo governo durante o ano
+def montante_ano (base):       # mostra o valor total subsidiado pelo governo durante o ano
+    
+    ano = 2009
+    lista = []    #aqui vai ser guardado o somatório de cada ano, variando entre 2009 e 2023, respectivamente
 
-    somatorio = 0 
-    for i in range (len(base["Ano"])):
-        if (base.at[i, 'Ano']) == ano:
-            a = (base.at[i, 'Valor_subsidiado'])
-            somatorio += a
+    while ano < 2024: 
+        for i in range (len(base["Ano"])):
+            somatorio = 0
+            if (base.at[i, 'Ano']) == ano:
+                a = (base.at[i, 'Valor_subsidiado'])
+                somatorio += a
+                lista.append(somatorio)
+            ano +=1
 
-    print ("O valor subsidiado pelo governo durante o ano de", ano, "foi de", somatorio)
+    print (lista)
 
 # Análise 3 - Determinação dos montante total por região do valor do financiamento (2009 a 2023)
 
-def montante_regiao (base, regiao):  
+def montante_regiao (base, regiao):  ##### MODIFICAR print #######
 
     somatorio = 0 
     for i in range (len(base["Região"])):
         if (base.at[i, 'Região']) == regiao:
-            a = (base.at[i, 'Valor_financiamento'])
+            a = (base.at[i, 'Valor_financiado'])
             somatorio += a
 
     print ("O valor financiado ")
@@ -299,8 +305,150 @@ def capitais (base):
         if (lista[i]== (maximo)):
             print ("O estado que mais solicitou financiamentos foi:", capitais[i],", com", maximo, "financiamentos.")
 
-# Análise 6 - 
+# Análise 6 - Valor financiado por região e dividido por ano 
 
+def regiao_ano_valor_sub (base, regiao):  
+
+    ano = 2009
+
+    lista1 = []
+    lista2 = []
+    lista3 = []
+    lista4 = []
+    lista5 = []
+    lista6 = []
+    lista7 = []
+    lista8 = []
+    lista9 = []
+    lista10 = []
+    lista11 = []
+    lista12 = []
+    lista13 = []
+    lista14 = []
+    lista15 = []
+
+    soma1 = 0
+    soma2 = 0
+    soma3 = 0
+    soma4 = 0
+    soma5 = 0
+    soma6 = 0
+    soma7 = 0
+    soma8 = 0
+    soma9 = 0
+    soma10 = 0
+    soma11 = 0
+    soma12 = 0
+    soma13 = 0
+    soma14= 0
+    soma15= 0
+
+    while ano <= 2023:
+
+        for i in range (len(base["Região"])):
+
+            a = (base.at[i, "Valor_financiado"])
+
+            if ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2009):
+                soma1 += a
+                lista1.append(soma1)
+
+            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2010):
+                soma2 += a
+                lista2.append(soma1)
+
+            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2011):
+                soma3 += a
+                lista3.append(soma1)
+
+            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2012):
+                soma4 += a
+                lista4.append(soma1)
+
+            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2013):
+                soma5 += a
+                lista5.append(soma1)
+
+            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2014):
+                soma6 += a
+                lista6.append(soma1)
+
+            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2015):
+                soma7 += a
+                lista7.append(soma1)
+
+            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2016):
+                soma8 += a
+                lista8.append(soma1)
+
+            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2017):
+                soma9 += a
+                lista9.append(soma1)
+
+            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2018):
+                soma10 += a
+                lista10.append(soma1)
+
+            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2019):
+                soma11 += a
+                lista11.append(soma1)
+
+            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2020):
+                soma12 += a
+                lista12.append(soma1)
+
+            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2021):
+                soma13 += a
+                lista13.append(soma1)
+
+            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2022):
+                soma14 += a
+                lista14.append(soma1)
+            else: 
+                soma15 += a
+                lista15.append(soma1)
+        ano += 1
+
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2009 foi de", soma1)
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2010 foi de", soma2)
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2011 foi de", soma3)
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2012 foi de", soma4)
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2013 foi de", soma5)
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2014 foi de", soma6)
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2015 foi de", soma7)
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2016 foi de", soma8)
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2017 foi de", soma9)
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2018 foi de", soma10)
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2019 foi de", soma11)
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2020 foi de", soma12)
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2021 foi de", soma13)
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2022 foi de", soma14)
+    print ("O valor financiado pelo região", regiao, "durante o ano de 2023 foi de", soma15)
+
+# Análise 7 - Identificação das 10 cidades que mais receberam subsídio do governo 
+
+def subsidio_10_cidades (base):   
+
+    import pandas as pd
+
+    df = pd.DataFrame(base['Município'])
+    df.insert (1,'Valor', base['Valor_subsidiado'])
+
+    lista_de_valores = []
+
+    for i in range (len(base['Município'])):  #tanto faz ser municipio ou valor_subsidiado, pois ambos tem o mesmo tamanho
+        
+        lista = []
+
+        for j in range (len(base['Valor_subsidiado'])):
+        
+            if ((base.at[i,'Município']) == (base.at[j, 'Município'])):
+                if ((base.at[i,'Valor_subsidiado']) != (base.at[i,'Valor_subsidiado'])):
+                    lista.append (base.at[j, 'Valor_subsidiado'])
+
+        lista_de_valores.append (sum(lista))
+
+    print (lista_de_valores)
 
 
 def main():
@@ -322,23 +470,15 @@ def main():
     dados = dados.assign(Valor_financiado = dados['Valor_financiado'].str.replace(',','.').astype(float))
     dados = dados.assign(Valor_subsidiado = dados['Valor_subsidiado'].str.replace(',','.').astype(float))
 
-    opcoes = int(input("Escolha uma opção:\n 1 - "))
+    #opcoes = int(input("Escolha uma opção:\n 1 - "))
 
 
-    ano = int(input("Digite o ano (2009 a 2023):\n"))
-    regiao = input("Digite o nome da região(Norte, Nordeste, Centro-Oeste, Sudeste ou Sul):\n")
-      
-    n = media_uni_habitacionais (dados,ano)
+    # ano = int(input("Digite o ano (2009 a 2023):\n"))
+    # regiao = input("Digite o nome da região(Norte, Nordeste, Centro-Oeste, Sudeste ou Sul):\n")
+    
+    subsidio_10_cidades (dados)
 
-    print (dados)
-
-    print()
-
-    estado (dados)
-
-    print ()
-
-    print ("Média de unidades habitacionais no ano de", ano, ":" , n)
+    print() 
 
 main()
 

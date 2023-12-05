@@ -427,38 +427,36 @@ def regiao_ano_valor_sub (base, regiao):
 
 # Análise 7 - Identificação das 10 cidades que mais receberam subsídio do governo 
 
-def subsidio_10_cidades (base):   
+def subsidio_10_cidades(base):   
 
     import pandas as pd
 
     df = pd.DataFrame(base['Município'])
     df.insert (1,'Valor', base['Valor_subsidiado'])
 
-    lista_de_valores = []
+    df_processado = df.groupby(["Município"]).sum()
+    print(df_processado)
+    
+    lista = []
 
-    for i in range (len(base['Município'])):  #tanto faz ser municipio ou valor_subsidiado, pois ambos tem o mesmo tamanho
-        
-        lista = []
+    for i in range (len(base["Município"])):
 
-        for j in range (len(base['Valor_subsidiado'])):
-        
-            if ((base.at[i,'Município']) == (base.at[j, 'Município'])):
-                if ((base.at[i,'Valor_subsidiado']) != (base.at[i,'Valor_subsidiado'])):
-                    lista.append (base.at[j, 'Valor_subsidiado'])
+        lista.append(base.at[i,'Valor_subsidiado'])
 
-        lista_de_valores.append (sum(lista))
-
-    print (lista_de_valores)
+    
 
 
+
+    
 def main():
 
     import os
     import pandas as pd
 
     print(os.listdir(os.getcwd()))
+    path = "mcmv_financiado_fgts.csv"
 
-    dados = pd.read_csv("mcmv_financiado_fgts.csv", sep=";", encoding="ISO-8859-1")
+    dados = pd.read_csv("mcmv_financiado_fgts.csv", sep=";", encoding="cp1252")
     dados.head()
     dados.rename (columns = {'txt_municipio':'Município','txt_uf':'Estado','txt_regiao':'Região','num_ano_financiamento':'Ano', 'qtd_uh_financiadas':'Quantidade','vlr_financiamento':'Valor_financiado','vlr_subsidio':'Valor_subsidiado'}, inplace = True)
 
@@ -472,13 +470,11 @@ def main():
 
     #opcoes = int(input("Escolha uma opção:\n 1 - "))
 
-
     # ano = int(input("Digite o ano (2009 a 2023):\n"))
     # regiao = input("Digite o nome da região(Norte, Nordeste, Centro-Oeste, Sudeste ou Sul):\n")
-    
-    subsidio_10_cidades (dados)
 
-    print() 
+    subsidio_10_cidades(dados)
+    
 
 main()
 

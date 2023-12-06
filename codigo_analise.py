@@ -462,6 +462,7 @@ def unid_habit_regioes(base):
 # Análise 9 - Identificação do município brasileiro que mais solicitou o financiamento de unidades habitacionais em 2022
 
 def municipio_financiamento(base):
+
     import pandas as pd 
 
     df = pd.DataFrame(base['Região'])
@@ -469,6 +470,7 @@ def municipio_financiamento(base):
     df.insert(2, 'Ano', base['Ano'])
     
     df_processado = df.groupby(["Região", "Ano"])["Quantidade_uni_habitacionais"].count()
+    df_processado.head()
 
     pd.set_option("display.max_row", 75)
 
@@ -481,14 +483,14 @@ def regiao_subsidiado (base):
     import pandas as pd
 
     df = pd.DataFrame(base['Região'])
-    df.insert (1,'Valor_subsidiado', base['Valor_subsidiado'])
+    df.insert (1,'Valor', base['Valor_subsidiado'])
     df.insert(2, 'Ano', base['Ano'])
         
-    df_processado = df.groupby(["Região", "Ano"])["Valor_subsidiado"].count()
-
-    pd.set_option("display.max_row", 75)
-
-    print (df_processado)
+    df_novo = df.groupby(["Região", "Ano"])
+    df_novo.head()
+    
+    pd.set_option("display.max_row", 375)
+    print (df_novo)
 
 def main():
 
@@ -514,7 +516,6 @@ def main():
 
     # ano = int(input("Digite o ano (2009 a 2023):\n"))
     #regiao = input("Digite o nome da região(Norte, Nordeste, Centro-Oeste, Sudeste ou Sul):\n")
-
 
     regiao_subsidiado(dados)
 

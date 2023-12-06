@@ -434,20 +434,13 @@ def subsidio_10_cidades(base):
     df = pd.DataFrame(base['Município'])
     df.insert (1,'Valor', base['Valor_subsidiado'])
 
-    df_processado = df.groupby(["Município"]).sum()
-    print(df_processado)
+    df_processado = df.groupby(["Município"], as_index=False).sum()
     
-    lista = []
-
-    for i in range (len(base["Município"])):
-
-        lista.append(base.at[i,'Valor_subsidiado'])
-
-    
+    df_novo = df_processado.sort_values(by='Valor', ascending=False)
+    df_novo.head(40)
+    print(df_novo)
 
 
-
-    
 def main():
 
     import os
@@ -456,7 +449,7 @@ def main():
     print(os.listdir(os.getcwd()))
     path = "mcmv_financiado_fgts.csv"
 
-    dados = pd.read_csv("mcmv_financiado_fgts.csv", sep=";", encoding="cp1252")
+    dados = pd.read_csv("mcmv_financiado_fgts.csv", sep=";", encoding="latin_1", low_memory=False)
     dados.head()
     dados.rename (columns = {'txt_municipio':'Município','txt_uf':'Estado','txt_regiao':'Região','num_ano_financiamento':'Ano', 'qtd_uh_financiadas':'Quantidade','vlr_financiamento':'Valor_financiado','vlr_subsidio':'Valor_subsidiado'}, inplace = True)
 

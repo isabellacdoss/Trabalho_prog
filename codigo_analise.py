@@ -206,6 +206,8 @@ def capitais (base):
     lista27 = []    
 
     for i in range (len(base["Municípios"])):
+
+        lista = []
             
         if (base.at[i, "Município"]) == "Rio Branco":
             lista1.append (base.at[i, 'Quantidade'])
@@ -437,9 +439,56 @@ def subsidio_10_cidades(base):
     df_processado = df.groupby(["Município"], as_index=False).sum()
     
     df_novo = df_processado.sort_values(by='Valor', ascending=False)
-    df_novo.head(40)
-    print(df_novo)
+    df_impressao = df_novo.head(10)
 
+    print(df_impressao)
+
+# Análise 8 - Comparação entre o número de unidades habitacionais solicitadas por região por ano (2009 a 2023)
+
+def unid_habit_regioes(base):
+
+    import pandas as pd 
+
+    df = pd.DataFrame(base['Região'])
+    df.insert(1,'Quantidade_uni_habitacionais', base['Quantidade'])
+    df.insert(2, 'Ano', base['Ano'])
+    
+    df_processado = df.groupby(["Região", "Ano"])["Quantidade_uni_habitacionais"].count()
+
+    pd.set_option("display.max_row", 75)
+
+    print (df_processado)
+
+# Análise 9 - Identificação do município brasileiro que mais solicitou o financiamento de unidades habitacionais em 2022
+
+def municipio_financiamento(base):
+    import pandas as pd 
+
+    df = pd.DataFrame(base['Região'])
+    df.insert(1,'Quantidade_uni_habitacionais', base['Quantidade'])
+    df.insert(2, 'Ano', base['Ano'])
+    
+    df_processado = df.groupby(["Região", "Ano"])["Quantidade_uni_habitacionais"].count()
+
+    pd.set_option("display.max_row", 75)
+
+    print (df_processado)
+
+# Análise 10 - Valor subsidiado pelo governo por região e por ano 
+
+def regiao_subsidiado (base):
+
+    import pandas as pd
+
+    df = pd.DataFrame(base['Região'])
+    df.insert (1,'Valor_subsidiado', base['Valor_subsidiado'])
+    df.insert(2, 'Ano', base['Ano'])
+        
+    df_processado = df.groupby(["Região", "Ano"])["Valor_subsidiado"].count()
+
+    pd.set_option("display.max_row", 75)
+
+    print (df_processado)
 
 def main():
 
@@ -464,10 +513,10 @@ def main():
     #opcoes = int(input("Escolha uma opção:\n 1 - "))
 
     # ano = int(input("Digite o ano (2009 a 2023):\n"))
-    # regiao = input("Digite o nome da região(Norte, Nordeste, Centro-Oeste, Sudeste ou Sul):\n")
+    #regiao = input("Digite o nome da região(Norte, Nordeste, Centro-Oeste, Sudeste ou Sul):\n")
 
-    subsidio_10_cidades(dados)
-    
+
+    regiao_subsidiado(dados)
 
 main()
 

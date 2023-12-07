@@ -14,9 +14,9 @@ Av. Fernando Ferrari, 514 – Goiabeiras, Vitoria – ES, 29075-910 – Brasil
 
 **Abstract.**
 
-The objective of this work is to present, analyze and discuss the distribution of subsidies and the number of financings in the "Minha Casa, Minha Vida" program. Using all the information available in the database, the analysis seeks to understand the allocation of subsidies in different regions of Brazil and the variation in financing in relation to population density.
+: The objective of this work is to present, analyze and discuss the distribution of subsidies and the number of financings in the "Minha Casa, Minha Vida" program. Using all the information available in the database, the analysis seeks to understand the allocation of subsidies in different regions of Brazil and the variation in financing in relation to population density.
 When investigating the distribution of subsidies, the study seeks to identify regional disparities, considering factors such as the concentration of the needy population. Furthermore, when analyzing financing numbers, we seek to assess whether distribution is proportional to population density, especially in regions with greater housing demand.
-The proposed approach aims to provide an in-depth understanding of how the Minha Casa, Minha Vida program impacts various areas of Brazil, contributing to a comprehensive analysis of the effectiveness and equity in the distribution of subsidies and financing.
+The proposed approach aims to provide an in-depth understanding of how the Minha Casa, Minha Vida program impacts various areas of Brazil, contributing to a comprehensive analysis of the effectiveness and equity in the distribution of subsidies and financing. :
 
 
 **Resumo.** 

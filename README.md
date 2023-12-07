@@ -18,16 +18,25 @@ Av. Fernando Ferrari, 514 – Goiabeiras, Vitoria – ES, 29075-910 – Brasil
 **Resumo.** 
 
 
-1.	Introdução
+
+
+
+**1.	Introdução**
+   
 Neste trabalho falaremos sobre blablabla 
 
 
-2.	Metodologia
-3.	Análise dos Resultados 
+**3.	Metodologia**
+
+   
+**5.	Análise dos Resultados**
 
 Todas as palavras que possuem acento na base deram “erro”
-4.	Conclusão
-Referências 
+
+**4.	Conclusão**
+
+   
+**Referências**
 
 
 

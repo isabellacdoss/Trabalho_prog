@@ -1,6 +1,6 @@
 <h1 align="center"> ANÁLISE DOS DADOS DO PROGRAMA "MINHA CASA, MINHA VIDA" </h1> 
 
-## Informações   
+## ℹ️ Informações   
   
 | Interface Utilizada | Ling. de Programação | Base de Dados |
 |-----------------|-------------------|------------------|

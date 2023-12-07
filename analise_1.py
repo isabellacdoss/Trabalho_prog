@@ -8,10 +8,12 @@ medias = [65.20, 98.25, 105.53, 106.12, 109.77, 110.21, 110.09, 105.95, 120.94, 
 mpl.figure(figsize = (15,12)) #define o tamanho da imagem 
 
 mpl.bar(anos, medias, color = "blue", label = "Média de unidades habitacionais financiadas por ano")
-mpl.grid(False)
-mpl.box(False)
+mpl.grid(False) #com True aparece a grade 
+mpl.box(True) #faz aparecer uma margem ao redor do gráfico
 mpl.title("Média de Unidades Habitacionais financiadas por ano pelo programa Minha Casa, Minha Vida")
 mpl.legend()
 
 mpl.show() #usado para gerar o gráfico
+
+
 

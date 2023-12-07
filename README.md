@@ -23,12 +23,14 @@ O objetivo deste trabalho é apresentar, analisar e discutir a distribuição de
 
 **1.	Introdução**
    
-Neste trabalho falaremos sobre blablabla 
-
+O programa "Minha Casa, Minha Vida", instituído em 2009 durante o governo de Luiz Inácio Lula da Silva e administrado pelo Ministério das Cidades, busca viabilizar o acesso à moradia digna para famílias de baixa renda no Brasil. O projeto oferece apoio por meio de subsídio governamental, um auxílio financeiro para reduzir o custo total do imóvel, e financiamento com recursos do FGTS. Este último permite que o interessado utilize parte do saldo do FGTS para quitar a entrada, que geralmente varia de 10% a 30% do valor solicitado.
+Neste trabalho analisaremos o conjunto de dados intitulado "Dados Minha Casa, Minha Vida". Nele, identificamos uma possível problemática relacionada à distribuição inadequada de subsídios em regiões caracterizadas por uma considerável disparidade de renda entre suas populações, tornando-as mais vulneráveis do ponto de vista socioeconômico.
+As análises possuem o intuito de averiguar as hipóteses levantadas: i) A região Norte e Nordeste do Brasil receberam/recebem mais subsídios, uma vez que, a maior parte da população carente brasileira se localiza nessas regiões. ii) A região Sudeste recebe menos subsídios, considerando que ela possui o maior Produto Interno Bruto (PIB) do país. iii) A distribuição dos subsídios do programa "Minha Casa, Minha Vida" pode variar em relação à densidade populacional nas diferentes regiões do Brasil. Sugere-se que regiões com maior densidade populacional possam ter recebido uma alocação proporcionalmente maior de financiamentos e subsídios, visando atender à demanda habitacional mais intensa, como o estado de São Paulo.
 
 **3.	Metodologia**
 
-   
+
+
 **4.	Análise dos Resultados**
 
 Todas as palavras que possuem acento na base deram “erro”

@@ -12,7 +12,7 @@ Av. Fernando Ferrari, 514 – Goiabeiras, Vitoria – ES, 29075-910 – Brasil
 </p>
 
 # CSharp Extensions (demo)
-[![VsCode](https://img.shields.io/travis/wellingtonjhn/csharp-extensions.svg?label=travis)](https://code.visualstudio.com/)
+[![VsCode](https://img.shields.io/badge/VsCode-Interface-blue)](https://code.visualstudio.com/)
 [![Python](https://img.shields.io/appveyor/ci/wellingtonjhn/csharp-extensions.svg?label=appveyor)](https://www.python.org/)
 [![Gov.br](https://img.shields.io/nuget/v/CSharpExtensions.Core.svg)](https://dados.gov.br/dados/conjuntos-dados/dados-do-minha-casa-minha-vida)
 

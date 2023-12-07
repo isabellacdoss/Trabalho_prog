@@ -23,19 +23,19 @@ database, the analysis seeks to understand the allocation of subsidies in differ
 O objetivo deste trabalho é apresentar, analisar e discutir a distribuição de subsídios e o número de financiamentos no programa "Minha Casa, Minha Vida". Utilizando todas as informações disponíveis na base de dados, a análise busca compreender a alocação de subsídios em diferentes regiões do Brasil e a variação dos financiamentos em relação à densidade populacional. Ao investigar a distribuição de subsídios, o estudo procura identificar disparidades regionais, considerando fatores como a concentração de população carente. Além disso, ao analisar os números de financiamentos, busca-se avaliar se a distribuição é proporcional à densidade populacional, especialmente em regiões com maior demanda habitacional. A abordagem adotada visa fornecer uma compreensão aprofundada de como o programa Minha Casa, Minha Vida impacta diversas áreas do Brasil, contribuindo para uma análise abrangente da eficácia e equidade na distribuição de subsídios e financiamentos.
 
 
-**1.	Introdução**
+##**1.	Introdução**
    
 Neste trabalho falaremos sobre blablabla 
 
 
-**3.	Metodologia**
+###**3.	Metodologia**
 
    
-**5.	Análise dos Resultados**
+####**4.	Análise dos Resultados**
 
 Todas as palavras que possuem acento na base deram “erro”
 
-**4.	Conclusão**
+#####**5.	Conclusão**
 
    
 **Referências**

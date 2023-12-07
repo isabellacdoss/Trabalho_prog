@@ -8,7 +8,7 @@ def media_uni_habitacionais (base, ano):     # mostra a média anual
     for i in range (len(base["Ano"])):
         if (base.at[i, 'Ano']) == ano:
             lista.append (base.at[i, 'Quantidade'])
-            media_de_unid = np.mean(lista)
+    media_de_unid = np.mean(lista)
 
     print ("A média e uni. habitacionais financiadas durante o ano de", ano, "foi de:", media_de_unid) 
 
@@ -32,7 +32,7 @@ def montante_ano (base):       # mostra o valor total subsidiado pelo governo du
 
 # Análise 3 - Determinação dos montante total por região do valor do financiamento (2009 a 2023)
 
-def montante_regiao (base, regiao):  ##### MODIFICAR print #######
+def montante_regiao (base, regiao):  
 
     somatorio = 0 
     for i in range (len(base["Região"])):
@@ -40,7 +40,7 @@ def montante_regiao (base, regiao):  ##### MODIFICAR print #######
             a = (base.at[i, 'Valor_financiado'])
             somatorio += a
 
-    print ("O valor financiado ")
+    print ("O valor do montante do financiamento na região", regiao, "foi de", somatorio)
 
 # Análise 4 - Identificação do estado que mais solicitou o financiamento de unidades habitacionais e o que menos solicitou durante o período de 2009 a 2023
 
@@ -205,7 +205,7 @@ def capitais (base):
     lista26 = []
     lista27 = []    
 
-    for i in range (len(base["Municípios"])):
+    for i in range (len(base["Município"])):
 
         lista = []
             
@@ -296,16 +296,16 @@ def capitais (base):
     minimo = (min(lista))
     maximo = (max(lista))
 
-    print ("A soma dos valores por estado é:", lista, "seguindo a ordem da lista dos estados", capitais,". \n")
+    print ("A soma dos valores por município é:", lista, "seguindo a ordem da lista dos estados", capitais,". \n")
     print ()
 
     for i in range (len(lista)):
         if (lista[i]== (minimo)):
-            print ("O estado que menos solicitou financiamentos foi:", capitais[i],", com", minimo, "financiamentos.")
+            print ("A capital que menos solicitou financiamentos foi:", capitais[i],", com", minimo, "financiamentos.")
 
     for i in range (len(lista)):
         if (lista[i]== (maximo)):
-            print ("O estado que mais solicitou financiamentos foi:", capitais[i],", com", maximo, "financiamentos.")
+            print ("A capital que mais solicitou financiamentos foi:", capitais[i],", com", maximo, "financiamentos.")
 
 # Análise 6 - Valor financiado por região e dividido por ano 
 
@@ -459,22 +459,22 @@ def unid_habit_regioes(base):
 
     print (df_processado)
 
-# Análise 9 - Identificação do município brasileiro que mais solicitou o financiamento de unidades habitacionais em 2022
+# Análise 9 - Identificação do município brasileiro que mais solicitou o financiamento de unidades habitacionais 
 
-def municipio_financiamento(base):
+def municipio_financiamento(base): 
 
-    import pandas as pd 
-
-    df = pd.DataFrame(base['Região'])
-    df.insert(1,'Quantidade_uni_habitacionais', base['Quantidade'])
+    import pandas as pd
+    df = pd.DataFrame(base['Município'])
+    df.insert(1,'a', base['Quantidade'])
     df.insert(2, 'Ano', base['Ano'])
-    
-    df_processado = df.groupby(["Região", "Ano"])["Quantidade_uni_habitacionais"].count()
-    df_processado.head()
+        
+    df_1 = df.groupby(["Município"])["a"].sum()
 
-    pd.set_option("display.max_row", 75)
+    df_impressao=df_1.sort_values(by = "a", ascending=False)
 
-    print (df_processado)
+    df_impressao.head()
+
+    print (df_impressao)
 
 # Análise 10 - Valor subsidiado pelo governo por região e por ano 
 
@@ -487,10 +487,11 @@ def regiao_subsidiado (base):
     df.insert(2, 'Ano', base['Ano'])
         
     df_novo = df.groupby(["Região", "Ano"])
-    df_novo.head()
+
     
-    pd.set_option("display.max_row", 375)
-    print (df_novo)
+    n = df_novo.head()
+
+    print (n)
 
 def main():
 
@@ -514,10 +515,11 @@ def main():
 
     #opcoes = int(input("Escolha uma opção:\n 1 - "))
 
-    # ano = int(input("Digite o ano (2009 a 2023):\n"))
-    #regiao = input("Digite o nome da região(Norte, Nordeste, Centro-Oeste, Sudeste ou Sul):\n")
+    #ano = int(input("Digite o ano (2009 a 2023):\n"))
+    #regiao = input("Digite o nome da região (Norte, Nordeste, Centro-Oeste, Sudeste ou Sul):\n")
 
     regiao_subsidiado(dados)
+    
 
 main()
 

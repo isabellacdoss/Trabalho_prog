@@ -11,11 +11,6 @@
 | [![VsCode](https://img.shields.io/badge/VsCode-Interface-blue)](https://code.visualstudio.com/) | ______________[![Python](https://img.shields.io/badge/Python-3.11.7-blue)](https://www.python.org/)  | [![Gov.br](https://img.shields.io/badge/Base_de_Dados-Gov.br-blue)](https://dados.gov.br/dados/conjuntos-dados/dados-do-minha-casa-minha-vida) |
 
 
-<h1 align="center">
-    <a href="https://pt-br.reactjs.org/">🔗 React</a>
-</h1>
-<p align="center">🚀 lib para construir interfaces do usuário com componentes reutilizáveis</p>
-
 
 
 

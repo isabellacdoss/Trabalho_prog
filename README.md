@@ -12,9 +12,9 @@ Av. Fernando Ferrari, 514 – Goiabeiras, Vitoria – ES, 29075-910 – Brasil
 </p>
 
 # CSharp Extensions (demo)
-[![Travis](https://img.shields.io/travis/wellingtonjhn/csharp-extensions.svg?label=travis)](https://travis-ci.org/wellingtonjhn/csharp-extensions)
-[![AppVeyor](https://img.shields.io/appveyor/ci/wellingtonjhn/csharp-extensions.svg?label=appveyor)](https://ci.appveyor.com/project/wellingtonjhn/csharp-extensions)
-[![NuGet](https://img.shields.io/nuget/v/CSharpExtensions.Core.svg)](https://www.nuget.org/packages/CSharpExtensions.Core)
+[![VsCode](https://img.shields.io/travis/wellingtonjhn/csharp-extensions.svg?label=travis)](https://code.visualstudio.com/)
+[![Python](https://img.shields.io/appveyor/ci/wellingtonjhn/csharp-extensions.svg?label=appveyor)](https://www.python.org/)
+[![Gov.br](https://img.shields.io/nuget/v/CSharpExtensions.Core.svg)](https://dados.gov.br/dados/conjuntos-dados/dados-do-minha-casa-minha-vida)
 
 
 

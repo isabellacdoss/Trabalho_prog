@@ -27,10 +27,9 @@ def montante_ano (base):       # mostra o valor total subsidiado pelo governo du
                 somatorio += a
                 lista.append(somatorio)
             ano +=1
-
     print (lista)
 
-# Análise 3 - Determinação dos montante total por região do valor do financiamento (2009 a 2023)
+# Análise 3 - Determinação dos montante total por região do valor do financiamento 
 
 def montante_regiao (base, regiao):  
 
@@ -167,11 +166,11 @@ def estado (base):
 
     for i in range (len(lista)):
         if (lista[i]== (minimo)):
-            print ("O estado que menos solicitou financiamentos foi:", estados[i],", com", minimo, "financiamentos.")
+            print ("O estado que menos solicitou financiamentos foi ", estados[i],", com", minimo, "financiamentos.")
 
     for i in range (len(lista)):
         if (lista[i]== (maximo)):
-            print ("O estado que mais solicitou financiamentos foi:", estados[i],", com", maximo, "financiamentos.")
+            print ("O estado que mais solicitou financiamentos foi ", estados[i],", com", maximo, "financiamentos.")
 
 # Análise 5 - Avaliação da disparidade na quantidade de unidades habitacionais contratadas pelas capitais dos estados brasileiros durante os anos de 2009 a 2023
 
@@ -518,9 +517,8 @@ def main():
     #ano = int(input("Digite o ano (2009 a 2023):\n"))
     #regiao = input("Digite o nome da região (Norte, Nordeste, Centro-Oeste, Sudeste ou Sul):\n")
 
-    regiao_subsidiado(dados)
+    montante_ano(dados)
     
-
 main()
 
 

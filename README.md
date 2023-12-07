@@ -12,10 +12,10 @@ Av. Fernando Ferrari, 514 – Goiabeiras, Vitoria – ES, 29075-910 – Brasil
 </p>
 
 
-Abstract. 
+**Abstract.**
 
 
-Resumo. 
+**Resumo.** 
 
 
 1.	Introdução

@@ -12,16 +12,16 @@ A análise dos dados "MCMV financiado" foi conduzida com o propósito de apresen
 
 ## 📁 Análises
 
-- Análise 1:
-- Análise 2:
-- Análise 3:
-- Análise 4:
-- Análise 5:
-- Análise 6:
-- Análise 7:
-- Análise 8:
-- Análise 9:
-- Análise 10:
+- Análise 1: Média de unidades habitacionais financiadas por ano 
+- Análise 2: Montante total do valor subsidiano por ano pelo governo
+- Análise 3: Determinação dos montante total por região do valor do financiamento
+- Análise 4: Identificação do estado que mais solicitou o financiamento de unidades habitacionais e o que menos solicitou durante o período de 2009 a 2023
+- Análise 5: Avaliação da disparidade na quantidade de unidades habitacionais contratadas pelas capitais dos estados brasileiros durante os anos de 2009 a 2023
+- Análise 6: Valor financiado por região e dividido por ano
+- Análise 7: Identificação das 10 cidades que mais receberam subsídio do governo
+- Análise 8: Comparação entre o número de unidades habitacionais solicitadas por região por ano (2009 a 2023)
+- Análise 9: Identificação do município brasileiro que mais solicitou o financiamento de unidades habitacionais 
+- Análise 10: Valor subsidiado pelo governo por região e por ano 
 
 ## 🔗 Conclusão 
 

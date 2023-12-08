@@ -306,27 +306,11 @@ def capitais (base):
         if (lista[i]== (maximo)):
             print ("A capital que mais solicitou financiamentos foi:", capitais[i],", com", maximo, "financiamentos.")
 
-# Análise 6 - Valor financiado por região e dividido por ano 
+# Análise 6 - Valor financiado por região e ano
 
 def regiao_ano_valor_sub (base, regiao):  
 
     ano = 2009
-
-    lista1 = []
-    lista2 = []
-    lista3 = []
-    lista4 = []
-    lista5 = []
-    lista6 = []
-    lista7 = []
-    lista8 = []
-    lista9 = []
-    lista10 = []
-    lista11 = []
-    lista12 = []
-    lista13 = []
-    lista14 = []
-    lista15 = []
 
     soma1 = 0
     soma2 = 0
@@ -352,63 +336,54 @@ def regiao_ano_valor_sub (base, regiao):
 
             if ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2009):
                 soma1 += a
-                lista1.append(soma1)
 
             elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2010):
                 soma2 += a
-                lista2.append(soma1)
 
             elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2011):
                 soma3 += a
-                lista3.append(soma1)
 
             elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2012):
                 soma4 += a
-                lista4.append(soma1)
 
             elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2013):
                 soma5 += a
-                lista5.append(soma1)
 
             elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2014):
                 soma6 += a
-                lista6.append(soma1)
 
             elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2015):
                 soma7 += a
-                lista7.append(soma1)
 
             elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2016):
                 soma8 += a
-                lista8.append(soma1)
 
             elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2017):
                 soma9 += a
-                lista9.append(soma1)
 
             elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2018):
                 soma10 += a
-                lista10.append(soma1)
 
             elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2019):
                 soma11 += a
-                lista11.append(soma1)
 
             elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2020):
                 soma12 += a
-                lista12.append(soma1)
 
             elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2021):
                 soma13 += a
-                lista13.append(soma1)
 
             elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2022):
                 soma14 += a
-                lista14.append(soma1)
+
             else: 
-                soma15 += a
-                lista15.append(soma1)
+                if ((base.at[i,"Região"]) == regiao) and (base.at[i,"Ano"]) == 2023:
+                    soma15 += a
         ano += 1
+
+    lista_valores = [soma1,soma2,soma3,soma4,soma5,soma6,soma7,soma8,soma9,soma10,soma11,soma12,soma13,soma14,soma15]
+
+    print (lista_valores)
 
     print ("O valor financiado pelo região", regiao, "durante o ano de 2009 foi de", soma1)
     print ("O valor financiado pelo região", regiao, "durante o ano de 2010 foi de", soma2)
@@ -515,9 +490,9 @@ def main():
     #opcoes = int(input("Escolha uma opção:\n 1 - "))
 
     #ano = int(input("Digite o ano (2009 a 2023):\n"))
-    #regiao = input("Digite o nome da região (Norte, Nordeste, Centro-Oeste, Sudeste ou Sul):\n")
+    regiao = input("Digite o nome da região (Norte, Nordeste, Centro-Oeste, Sudeste ou Sul):\n")
 
-    montante_ano(dados)
+    regiao_ano_valor_sub(dados, regiao)
     
 main()
 

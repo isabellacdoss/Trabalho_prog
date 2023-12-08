@@ -14,16 +14,16 @@ A análise dos dados "MCMV financiado" foi conduzida com o propósito de apresen
 
 Realizamos análises mediante a extração de dados da base, empregando a linguagem de programação Python e as bibliotecas Pandas e Numpy. Essa abordagem possibilitou a criação de novos conjuntos de dados, conforme exemplificado nas análises a seguir:
 
-Análise 1: Cálculo da média de unidades habitacionais financiadas anualmente.
-Análise 2: Apuração do montante total de subsídio concedido pelo governo a cada ano.
-Análise 3: Determinação do montante total do financiamento por região.
-Análise 4: Identificação do estado com maior e menor número de solicitações de financiamento de unidades habitacionais de 2009 a 2023.
-Análise 5: Avaliação da disparidade na quantidade de unidades habitacionais contratadas pelas capitais dos estados brasileiros de 2009 a 2023.
-Análise 6: Quantificação do valor financiado por região, desagregado por ano.
-Análise 7: Identificação das 10 cidades que mais receberam subsídios do governo.
-Análise 8: Comparação do número de unidades habitacionais solicitadas por região anualmente (2009 a 2023).
-Análise 9: Identificação do município brasileiro com o maior número de solicitações de financiamento de unidades habitacionais.
-Análise 10: Apuração do valor subsidiado pelo governo, desagregado por região e ano.
+- Análise 1: Cálculo da média de unidades habitacionais financiadas anualmente.
+- Análise 2: Apuração do montante total de subsídio concedido pelo governo a cada ano.
+- Análise 3: Determinação do montante total do financiamento por região.
+- Análise 4: Identificação do estado com maior e menor número de solicitações de financiamento de unidades habitacionais de 2009 a 2023.
+- Análise 5: Avaliação da disparidade na quantidade de unidades habitacionais contratadas pelas capitais dos estados brasileiros de 2009 a 2023.
+- Análise 6: Quantificação do valor financiado por região, desagregado por ano.
+- Análise 7: Identificação das 10 cidades que mais receberam subsídios do governo.
+- Análise 8: Comparação do número de unidades habitacionais solicitadas por região anualmente (2009 a 2023).
+- Análise 9: Identificação do município brasileiro com o maior número de solicitações de financiamento de unidades habitacionais.
+- Análise 10: Apuração do valor subsidiado pelo governo, desagregado por região e ano.
 
 A visualização dessas análises foi realizada por meio da criação de gráficos utilizando a biblioteca Matplotlib. Detalhes adicionais estão disponíveis no arquivo "Análise_dos_Dados_"MCMV Financiado".pdf".
 

@@ -12,6 +12,8 @@ A análise dos dados "MCMV financiado" foi conduzida com o propósito de apresen
 
 ## 📁 Análises
 
+As análises foram realizadas através da extração de informações da base de dados, através da linguagem de programação Python e das bibliotecas Pandas e Numpy, gerando novos dados, como os descritos nas análises abaixo:
+
 - Análise 1: Média de unidades habitacionais financiadas por ano 
 - Análise 2: Montante total do valor subsidiano por ano pelo governo
 - Análise 3: Determinação dos montante total por região do valor do financiamento
@@ -21,7 +23,9 @@ A análise dos dados "MCMV financiado" foi conduzida com o propósito de apresen
 - Análise 7: Identificação das 10 cidades que mais receberam subsídio do governo
 - Análise 8: Comparação entre o número de unidades habitacionais solicitadas por região por ano (2009 a 2023)
 - Análise 9: Identificação do município brasileiro que mais solicitou o financiamento de unidades habitacionais 
-- Análise 10: Valor subsidiado pelo governo por região e por ano 
+- Análise 10: Valor subsidiado pelo governo por região e por ano
+
+Utilizando os dados extraídos, geramos gráficos, com o auxílio da biblioteca Matplotlib, os quais estão detalhados no arquivo "Análise_dos_Dados_"MCMV Financiado".pdf".
 
 ## 🔗 Conclusão 
 

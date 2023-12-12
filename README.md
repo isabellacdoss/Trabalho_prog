@@ -29,6 +29,7 @@ A visualização dessas análises foi realizada por meio da criação de gráfic
 
 ## 🔗 Conclusão 
 
+Após a análise do dados dispostos na base "MCMV financiado" chegamos a conclusão que ...
 
 
 

@@ -1,11 +1,12 @@
-'''                    Município         Valor
-4304                Sï¿½o Paulo  2.996378e+09
-2237              Joï¿½o Pessoa  2.226886e+09
-3640             Rio de Janeiro  2.191540e+09
-4578               Uberlï¿½ndia  1.614169e+09
-4643    Valparaï¿½so de Goiï¿½s  1.399529e+09
-3583           Ribeirï¿½o Preto  1.317948e+09
-1630                  Goiï¿½nia  1.235892e+09
-1475           Feira de Santana  1.171320e+09
-787                Campo Grande  1.151931e+09
-4782  ï¿½guas Lindas de Goiï¿½s  1.135820e+09'''
+#Análise 7
+
+import matplotlib.pyplot as mpl
+cidades = {"São Paulo": 2.9,"João Pessoa": 2.2,"Rio de Janeiro": 2.1,"Uberlândia":1.6,"Valparaíso de Goiás": 1.39,"Ribeirão Preto": 1.31,"Goiânia": 1.23, "Feira de Santana":1.17, "Campo Grande": 1.15,"Águas Lindas de Goiás": 1.13}
+
+fig, ax = mpl.subplots()
+ax.bar(cidades.keys(), cidades.values())
+mpl.xticks(rotation= 15)
+mpl.box(True)
+ax.set(title="As 10 cidades que mais receberma subsídio do Governo durante 2009 e 2023", ylabel="Valor em bilhões")
+mpl.show()
+

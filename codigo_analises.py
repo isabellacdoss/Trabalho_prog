@@ -1,30 +1,19 @@
 # Análise 1 - Média de unidades habitacionais financiadas por ano (2009 a 2023)
 
-def media_uni_habitacionais (base):     # mostra a média anual 
+def media_uni_habitacionais(base):     # mostra a média anual 
 
-    import numpy as np
     import pandas as pd
 
-    df = pd.DataFrame(base['Ano'])
-    df.insert (1,'Unidades_habitacionais', base['Quantidade'])
-        
-    df_novo = df.groupby(["Ano", "Unidades_habitacionais"]).sum()
+    df = pd.DataFrame(base['Ano'])    
+    df.insert (1,'Quantidade', base['Quantidade'])
 
-    n = df_novo.head()
+    df_processado = df.groupby(['Ano'], as_index=False).mean()  #junta os anos e soma a coluna de quantidade que tem anos iguais
 
-    return n
-    
-    '''lista = []
-    for i in range (len(base["Ano"])):
-        if (base.at[i, 'Ano']) == ano:
-            lista.append (base.at[i, 'Quantidade'])
-    media_de_unid = np.mean(lista)
+    return df_processado
 
-    print ("A média e uni. habitacionais financiadas durante o ano de", ano, "foi de:", media_de_unid) 
+# Análise 2 - Valor subsidiado pelo governo por ano
 
-# Análise 2 - Montante total do valor subsidiano por ano pelo governo'''
-
-def montante_ano (base):       # mostra o valor total subsidiado pelo governo durante o ano
+def montante_ano(base):  # mostra o valor total subsidiado pelo governo durante o ano
     
     ano = 2009
     lista = []    #aqui vai ser guardado o somatório de cada ano, variando entre 2009 e 2023, respectivamente
@@ -37,23 +26,33 @@ def montante_ano (base):       # mostra o valor total subsidiado pelo governo du
                 somatorio += a
                 lista.append(somatorio)
             ano +=1
-    print (lista)
+    
+    import pandas as pd 
+
+    n = {"Anos":[2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023]}
+    df = pd.DataFrame(n)
+    df.insert (1, 'Valor_subsidio', lista)
+
+    n = df.head(15)
+
+    return n 
 
 # Análise 3 - Determinação dos montante total por região do valor do financiamento 
 
-def montante_regiao (base, regiao):  
+def montante_regiao(base):  
 
-    somatorio = 0 
-    for i in range (len(base["Região"])):
-        if (base.at[i, 'Região']) == regiao:
-            a = (base.at[i, 'Valor_financiado'])
-            somatorio += a
+    import pandas as pd
 
-    print ("O valor do montante do financiamento na região", regiao, "foi de", somatorio)
+    df = pd.DataFrame(base['Região'])    
+    df.insert (1,'Valor_financiado', base['Valor_financiado'])
+
+    df_processado = df.groupby(['Região'], as_index=False).sum() #junta os anos e soma a coluna de quantidade que tem anos iguais
+
+    return df_processado
 
 # Análise 4 - Quantidade de unidades habitacionais financiadas pelos estados brasileiros de 2009 a 2023
 
-def estado (base):
+def estados(base):
 
     lista1 = []    #27 listas, 1 para cada estado + Distrito Federal
     lista2 = []
@@ -166,21 +165,15 @@ def estado (base):
         else: 
             lista26.append (base.at[i, 'Quantidade'])
 
-    estados = ['Acre', 'Alagoas', 'Amapá', 'Amazonas', 'Bahia', 'Ceará', 'Espírito Santo', 'Goiás', 'Maranhão', 'Mato Grosso', 'Mato Grosso do Sul', 'Minas Gerais', 'Pará', 'Paraíba', 'Paraná', 'Pernambuco', 'Piauí', 'Rio de Janeiro', 'Rio Grande do Norte', 'Rio Grande do Sul', 'Rondônia', 'Roraima', 'Santa Catarina', 'São Paulo', 'Sergipe', 'Tocantins', 'Distrito Federal']
+    estados ={"Estados":['Acre', 'Alagoas', 'Amapá', 'Amazonas', 'Bahia', 'Ceará', 'Espírito Santo', 'Goiás', 'Maranhão', 'Mato Grosso', 'Mato Grosso do Sul', 'Minas Gerais', 'Pará', 'Paraíba', 'Paraná', 'Pernambuco', 'Piauí', 'Rio de Janeiro', 'Rio Grande do Norte', 'Rio Grande do Sul', 'Rondônia', 'Roraima', 'Santa Catarina', 'São Paulo', 'Sergipe', 'Tocantins', 'Distrito Federal']}
     lista = [sum(lista1), sum(lista2), sum(lista3), sum(lista4), sum(lista5), sum(lista6), sum(lista7), sum(lista8),sum(lista9), sum(lista10),sum(lista11),sum(lista12),sum(lista13), sum(lista14),sum(lista15),sum(lista16), sum(lista17),sum(lista18),sum(lista19),sum(lista20),sum(lista21),sum(lista22), sum(lista23), sum(lista24),sum(lista25),sum(lista26), sum(lista27)]
-    minimo = (min(lista))
-    maximo = (max(lista))
+    
+    import pandas as pd
 
-    print ("A soma dos valores por estado é:", lista, "seguindo a ordem da lista dos estados", estados,". \n")
-    print ()
-
-    for i in range (len(lista)):
-        if (lista[i]== (minimo)):
-            print ("O estado que menos solicitou financiamentos foi ", estados[i],", com", minimo, "financiamentos.")
-
-    for i in range (len(lista)):
-        if (lista[i]== (maximo)):
-            print ("O estado que mais solicitou financiamentos foi ", estados[i],", com", maximo, "financiamentos.")
+    df = pd.DataFrame (estados)
+    df.insert(1,"Quantidade_de_financiamentos", lista)
+    
+    return (df)
 
 # Análise 5 - Avaliação da disparidade na quantidade de unidades habitacionais contratadas pelas capitais dos estados brasileiros durante os anos de 2009 a 2023
 
@@ -302,137 +295,28 @@ def capitais(base):
             lista26.append (base.at[i, 'Quantidade'])
 
     # As capitais estão na mesma ordem dos estados da função da análise 4
-    capitais = ['Rio Branco', 'Maceiï¿½', 'Macapï¿½', 'Manaus', 'Salvador', 'Fortaleza', 'Vitï¿½ria', 'Goiï¿½nia', 'São Luï¿½s', 'Cuiabï¿½', 'Campo Grande','Belo Horizonte', 'Belï¿½m', 'Joï¿½o Pessoa', 'Curitiba', 'Recife', 'Teresina', 'Rio de Janeiro', 'Natal', 'Porto Alegre', 'Porto Velho', 'Boa Vista', 'Florianï¿½polis', 'Sï¿½o Paulo', 'Aracaju', 'Palmas', 'Brasï¿½lia']
+    capitais = {"Capitais":['Rio Branco', 'Maceiï¿½', 'Macapï¿½', 'Manaus', 'Salvador', 'Fortaleza', 'Vitï¿½ria', 'Goiï¿½nia', 'São Luï¿½s', 'Cuiabï¿½', 'Campo Grande','Belo Horizonte', 'Belï¿½m', 'Joï¿½o Pessoa', 'Curitiba', 'Recife', 'Teresina', 'Rio de Janeiro', 'Natal', 'Porto Alegre', 'Porto Velho', 'Boa Vista', 'Florianï¿½polis', 'Sï¿½o Paulo', 'Aracaju', 'Palmas', 'Brasï¿½lia']}
     lista = [sum(lista1), sum(lista2), sum(lista3), sum(lista4), sum(lista5), sum(lista6), sum(lista7), sum(lista8),sum(lista9), sum(lista10),sum(lista11),sum(lista12),sum(lista13), sum(lista14),sum(lista15),sum(lista16), sum(lista17),sum(lista18),sum(lista19),sum(lista20),sum(lista21),sum(lista22), sum(lista23), sum(lista24),sum(lista25),sum(lista26), sum(lista27)]
-    minimo = (min(lista))
-    maximo = (max(lista))
 
-    print ("A soma dos valores por município é:", lista, "seguindo a ordem da lista dos estados", capitais,". \n")
-    print ()
+    df = pd.DataFrame(capitais)
+    df.insert(1,"Unidades_habitacionais_Contratadas", lista)
 
-    for i in range (len(lista)):
-        if (lista[i] == (maximo)):
-            maximo = i
-
-    for j in range (len(lista)):
-        if (lista[j] == (minimo)):
-            minimo = j
-
-    for b in range (len(capitais)):
-        if b == maximo :
-            cidade_max= capitais[b]
-            print ("A capital com o maior n° de financiamentos: ", cidade_max)
-        else:
-            if b == minimo:
-                cidade_min = capitais [b]
-                print ("A capital com o menor n° de financiamentos: ", cidade_min)
-
-    df = pd.DataFrame(base["Município"])
-    df.insert(1,"Quantidade_uni_habitacionais", base["Quantidade"])
-    df.insert(2, "Ano", base["Ano"])
-    
-    df_processado = df.groupby(["Município"])
-
-    for k in range(len(df_processado['Município'])):
-        if df_processado[k, 'Município'] == (cidade_max or cidade_min):
-            df_final = df_processado[k,'Município']
-
-    print (df_final.head())
+    return (df)
 
 # Análise 6 - Valor financiado por região e ano
 
-def regiao_ano_valor_fin (base, regiao):  
+def regiao_ano_valor_fin(base):  # os valores não estão corretos
 
-    ano = 2009
+    import pandas as pd
 
-    soma1 = 0
-    soma2 = 0
-    soma3 = 0
-    soma4 = 0
-    soma5 = 0
-    soma6 = 0
-    soma7 = 0
-    soma8 = 0
-    soma9 = 0
-    soma10 = 0
-    soma11 = 0
-    soma12 = 0
-    soma13 = 0
-    soma14= 0
-    soma15= 0
+    df = pd.DataFrame (base['Região'])
+    df.insert(1,"Ano", base['Ano'])
+    df.insert(2,'Valor_financiado', base['Valor_financiado'])
 
-    while ano <= 2023:
+    df_processado = df.groupby(['Região', 'Ano'])['Valor_financiado'].sum()
+    pd.set_option("display.max_row", 75)
 
-        for i in range (len(base["Região"])):
-
-            a = (base.at[i, "Valor_financiado"])
-
-            if ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2009):
-                soma1 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2010):
-                soma2 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2011):
-                soma3 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2012):
-                soma4 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2013):
-                soma5 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2014):
-                soma6 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2015):
-                soma7 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2016):
-                soma8 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2017):
-                soma9 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2018):
-                soma10 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2019):
-                soma11 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2020):
-                soma12 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2021):
-                soma13 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2022):
-                soma14 += a
-
-            else: 
-                if ((base.at[i,"Região"]) == regiao) and (base.at[i,"Ano"]) == 2023:
-                    soma15 += a
-        ano += 1
-
-    lista_valores = [soma1,soma2,soma3,soma4,soma5,soma6,soma7,soma8,soma9,soma10,soma11,soma12,soma13,soma14,soma15]
-
-    print (lista_valores)
-
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2009 foi de", soma1)
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2010 foi de", soma2)
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2011 foi de", soma3)
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2012 foi de", soma4)
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2013 foi de", soma5)
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2014 foi de", soma6)
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2015 foi de", soma7)
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2016 foi de", soma8)
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2017 foi de", soma9)
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2018 foi de", soma10)
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2019 foi de", soma11)
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2020 foi de", soma12)
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2021 foi de", soma13)
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2022 foi de", soma14)
-    print ("O valor financiado pelo região", regiao, "durante o ano de 2023 foi de", soma15)
+    return (df_processado)
 
 # Análise 7 - Identificação das 10 cidades que mais receberam subsídio do governo 
 
@@ -448,7 +332,7 @@ def subsidio_10_cidades(base):
     df_novo = df_processado.sort_values(by='Valor', ascending=False)
     df_impressao = df_novo.head(10)
 
-    print(df_impressao)
+    return(df_impressao)
 
 # Análise 8 - Comparação entre o número de unidades habitacionais solicitadas por região por ano (2009 a 2023)
 
@@ -485,20 +369,19 @@ def municipio_financiamento(base):
 
 # Análise 10 - Valor subsidiado pelo governo por região e por ano 
 
-def regiao_subsidiado (base):
+def regiao_subsidiado(base):    #esta dando erro
 
     import pandas as pd
 
     df = pd.DataFrame(base['Região'])
-    df.insert (1,'Valor', base['Valor_subsidiado'])
-    df.insert(2, 'Ano', base['Ano'])
+    df.insert(1, 'Ano', base['Ano'])
+    df.insert (2,'Valor', base['Valor_subsidiado'])
         
-    df_novo = df.groupby(["Região", "Ano"])
+    df_novo = df.groupby(['Região', 'Ano'])['Valor'].sum()
 
-    
-    n = df_novo.head()
+    pd.set_option("display.max_row", 75)
 
-    print (n)
+    return (df_novo)
 
 # Análise 11 
 
@@ -638,7 +521,7 @@ def main():
     dadosY = [65.20, 98.25, 105.53, 106.12, 109.77, 110.21, 110.09, 105.95, 120.94, 127.24, 117.19, 121.84, 120.10, 127.05, 97.08]
     gera_log (nome_log, n_analise, dadosX, dadosY, eixoX, eixoY)'''
 
-    n = media_uni_habitacionais (dados)
+    n = regiao_subsidiado(dados)
 
     print (n)
 

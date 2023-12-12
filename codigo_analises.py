@@ -1,10 +1,20 @@
 # Análise 1 - Média de unidades habitacionais financiadas por ano (2009 a 2023)
 
-def media_uni_habitacionais (base, ano):     # mostra a média anual 
+def media_uni_habitacionais (base):     # mostra a média anual 
 
     import numpy as np
+    import pandas as pd
 
-    lista = []
+    df = pd.DataFrame(base['Ano'])
+    df.insert (1,'Unidades_habitacionais', base['Quantidade'])
+        
+    df_novo = df.groupby(["Ano", "Unidades_habitacionais"]).sum()
+
+    n = df_novo.head()
+
+    return n
+    
+    '''lista = []
     for i in range (len(base["Ano"])):
         if (base.at[i, 'Ano']) == ano:
             lista.append (base.at[i, 'Quantidade'])
@@ -12,7 +22,7 @@ def media_uni_habitacionais (base, ano):     # mostra a média anual
 
     print ("A média e uni. habitacionais financiadas durante o ano de", ano, "foi de:", media_de_unid) 
 
-# Análise 2 - Montante total do valor subsidiano por ano pelo governo 
+# Análise 2 - Montante total do valor subsidiano por ano pelo governo'''
 
 def montante_ano (base):       # mostra o valor total subsidiado pelo governo durante o ano
     
@@ -585,7 +595,7 @@ def regiao_ano_valor_sub (base, regiao):
     print ("O valor subsidiado pelo região", regiao, "durante o ano de 2022 foi de", soma14)
     print ("O valor subsidiado pelo região", regiao, "durante o ano de 2023 foi de", soma15)
 
-#gera arquivo log
+# Gera o arquivo log
 
 def gera_log (nome_arq, n_analise, dados_x, dados_y, eixo_x, eixo_y):
     arq = open((nome_arq + ".log"), "w")
@@ -620,13 +630,17 @@ def main():
     #ano = int(input("Digite o ano (2009 a 2023):\n"))
     #regiao = input("Digite o nome da região (Norte, Nordeste, Centro-Oeste, Sudeste ou Sul):\n")
     
-    nome_log = "media_de_unidades_habitacionais_ano"
+    '''nome_log = "media_de_unidades_habitacionais_ano"
     eixoX = "anos"
     eixoY = "medias"
     n_analise = 1
     dadosX =  ["2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"]
     dadosY = [65.20, 98.25, 105.53, 106.12, 109.77, 110.21, 110.09, 105.95, 120.94, 127.24, 117.19, 121.84, 120.10, 127.05, 97.08]
-    gera_log (nome_log, n_analise, dadosX, dadosY, eixoX, eixoY)
+    gera_log (nome_log, n_analise, dadosX, dadosY, eixoX, eixoY)'''
+
+    n = media_uni_habitacionais (dados)
+
+    print (n)
 
 main()
 

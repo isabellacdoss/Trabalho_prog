@@ -1,14 +1,17 @@
 # Análise 1 - Média de unidades habitacionais financiadas por ano (2009 a 2023)
 
+from matplotlib import axes
+
+
 def media_uni_habitacionais(base):     # mostra a média anual 
 
     import pandas as pd
 
     df = pd.DataFrame(base['Ano'])    
-    df.insert (1,'Quantidade', base['Quantidade'])
+    df.insert (1,'Média', base['Quantidade'])
 
-    df_processado = df.groupby(['Ano'], as_index=False).mean()  #junta os anos e soma a coluna de quantidade que tem anos iguais
-
+    df_processado = df.groupby(['Ano'],as_index=False).mean()  #junta os anos e soma a coluna de quantidade que tem anos iguais
+    
     return df_processado
 
 # Análise 2 - Valor subsidiado pelo governo por ano
@@ -313,7 +316,7 @@ def regiao_ano_valor_fin(base):  # os valores não estão corretos
     df.insert(1,"Ano", base['Ano'])
     df.insert(2,'Valor_financiado', base['Valor_financiado'])
 
-    df_processado = df.groupby(['Região', 'Ano'])['Valor_financiado'].sum()
+    df_processado = df.groupby(['Região', 'Ano'])['Valor_financiado'].sum().reset_index()
     pd.set_option("display.max_row", 75)
 
     return (df_processado)
@@ -330,9 +333,9 @@ def subsidio_10_cidades(base):
     df_processado = df.groupby(["Município"], as_index=False).sum()
     
     df_novo = df_processado.sort_values(by='Valor', ascending=False)
-    df_impressao = df_novo.head(10)
+    df_novo.head(10)
 
-    return(df_impressao)
+    return(df_novo)
 
 # Análise 8 - Comparação entre o número de unidades habitacionais solicitadas por região por ano (2009 a 2023)
 
@@ -344,32 +347,30 @@ def unid_habit_regioes(base):
     df.insert(1,'Quantidade_uni_habitacionais', base['Quantidade'])
     df.insert(2, 'Ano', base['Ano'])
     
-    df_processado = df.groupby(["Região", "Ano"])["Quantidade_uni_habitacionais"].count()
+    df_processado = df.groupby(["Região", "Ano"])["Quantidade_uni_habitacionais"].sum()
 
     pd.set_option("display.max_row", 75)
 
     print (df_processado)
 
-# Análise 9 - Identificação do município brasileiro que mais solicitou o financiamento de unidades habitacionais 
+# Análise 9 - Identificação dos 10 municípios brasileiros que mais solicitaram financiamentos de unidades habitacionais 
 
 def municipio_financiamento(base): 
 
     import pandas as pd
     df = pd.DataFrame(base['Município'])
-    df.insert(1,'a', base['Quantidade'])
+    df.insert(1,'Quantidade', base['Quantidade'])
     df.insert(2, 'Ano', base['Ano'])
         
-    df_1 = df.groupby(["Município"])["a"].sum()
+    df_1 = df.groupby(["Município"])["Quantidade"].sum()
 
-    df_impressao=df_1.sort_values(by = "a", ascending=False)
-
-    df_impressao.head()
-
-    print (df_impressao)
+    df2= df_1.sort_values(ascending=False)
+    
+    return df2.head(10)
 
 # Análise 10 - Valor subsidiado pelo governo por região e por ano 
 
-def regiao_subsidiado(base):    #esta dando erro
+def regiao_subsidiado(base):    
 
     import pandas as pd
 
@@ -377,116 +378,84 @@ def regiao_subsidiado(base):    #esta dando erro
     df.insert(1, 'Ano', base['Ano'])
     df.insert (2,'Valor', base['Valor_subsidiado'])
         
-    df_novo = df.groupby(['Região', 'Ano'])['Valor'].sum()
+    df_novo = df.groupby(['Região', 'Ano'])['Valor'].sum().reset_index()
 
     pd.set_option("display.max_row", 75)
 
     return (df_novo)
 
-# Análise 11 
-
-def regiao_ano_valor_sub (base, regiao):  
-
-    ano = 2009
-
-    soma1 = 0
-    soma2 = 0
-    soma3 = 0
-    soma4 = 0
-    soma5 = 0
-    soma6 = 0
-    soma7 = 0
-    soma8 = 0
-    soma9 = 0
-    soma10 = 0
-    soma11 = 0
-    soma12 = 0
-    soma13 = 0
-    soma14= 0
-    soma15= 0
-
-    while ano <= 2023:
-
-        for i in range (len(base["Região"])):
-
-            a = (base.at[i, "Valor_subsidiado"])
-
-            if ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2009):
-                soma1 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2010):
-                soma2 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2011):
-                soma3 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2012):
-                soma4 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2013):
-                soma5 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2014):
-                soma6 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2015):
-                soma7 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2016):
-                soma8 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2017):
-                soma9 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2018):
-                soma10 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2019):
-                soma11 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2020):
-                soma12 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2021):
-                soma13 += a
-
-            elif ((base.at[i,"Região"]) == regiao) and ((base.at[i,"Ano"]) == 2022):
-                soma14 += a
-
-            else: 
-                if ((base.at[i,"Região"]) == regiao) and (base.at[i,"Ano"]) == 2023:
-                    soma15 += a
-        ano += 1
-
-    lista_valores = [soma1,soma2,soma3,soma4,soma5,soma6,soma7,soma8,soma9,soma10,soma11,soma12,soma13,soma14,soma15]
-
-    print (lista_valores)
-
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2009 foi de", soma1)
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2010 foi de", soma2)
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2011 foi de", soma3)
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2012 foi de", soma4)
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2013 foi de", soma5)
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2014 foi de", soma6)
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2015 foi de", soma7)
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2016 foi de", soma8)
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2017 foi de", soma9)
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2018 foi de", soma10)
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2019 foi de", soma11)
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2020 foi de", soma12)
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2021 foi de", soma13)
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2022 foi de", soma14)
-    print ("O valor subsidiado pelo região", regiao, "durante o ano de 2023 foi de", soma15)
-
 # Gera o arquivo log
 
 def gera_log (nome_arq, n_analise, dados_x, dados_y, eixo_x, eixo_y):
+
     arq = open((nome_arq + ".log"), "w")
     print ("Arquivo de log referente a analise:", n_analise, "intitulado: ", nome_arq, file=arq)
     print ("Os dados da analise sao: ", file = arq)
     print("Para o eixo X (",eixo_x,"): dados = ",dados_x, file=arq)
     print("Para o eixo y (",eixo_y,"): dados = ",dados_y, file=arq)
     arq.close()
+
+# Lê os DataFrames retornados pelas funções
+
+# Gráfico 1
+
+def grafico_1(dados):
+
+    import matplotlib.pyplot as mpl
+
+    df = media_uni_habitacionais(dados)
+
+    anos = df["Ano"]
+    media = df["Média"]
+    
+    mpl.figure(figsize = (15,12)) #define o tamanho da imagem 
+
+    mpl.barh(anos, media, color = "blue", label = "Média de unidades habitacionais financiadas por ano")  
+    mpl.box(True) # faz aparecer uma margem ao redor do gráfico
+    mpl.title("Média de Unidades Habitacionais financiadas por ano pelo programa Minha Casa, Minha Vida")
+    mpl.legend()
+
+    mpl.show() #usado para gerar o gráfico
+
+# Gráfico 2
+
+def grafico_2(dados):
+
+    import matplotlib.pyplot as mpl
+    import pandas as pa
+    import numpy as np 
+
+    df = montante_ano(dados)
+
+    valor_sub = df["Valor_subsidio"]
+    ano = df["Ano"]
+
+
+    fig, ax = mpl.subplots()
+    df.plot('Valor_subsidio', 'Ano', ax = ax)
+    ax.set_xticks(range(len(df['Ano'])))
+    ax.set_xticklabels(df['Ano'])
+    mpl.xticks(rotation = 45)
+    mpl.show()
+
+    mpl.figure(figsize=(14,10))
+    mpl.plot('Ano','Valor_subsidio', data = df)
+    mpl.xticks(rotation = 45)
+    mpl.show()
+    '''mpl.title('Valor subsidiado pelo Governo por ano')
+    mpl.plot(ano, valor_sub)
+    mpl.plot(ano,valor_sub, 'go')  # faz aparecer as bolinhas em cima do valor específico por ano 
+    mpl.plot(ano, valor_sub, color = "red")
+
+    mpl.ylim(30000, 360000)  # para que os valores do gráfico fiquem nesse intervalo 
+    axes.set_xticks(range(len(dados['Ano'])))
+    axes.set_xticklabels(dados['Ano'])
+
+    mpl.xlabel('Anos')
+    mpl.ylabel('Valor em real')
+
+    mpl.show()'''
+
 
 def main():
 
@@ -521,9 +490,9 @@ def main():
     dadosY = [65.20, 98.25, 105.53, 106.12, 109.77, 110.21, 110.09, 105.95, 120.94, 127.24, 117.19, 121.84, 120.10, 127.05, 97.08]
     gera_log (nome_log, n_analise, dadosX, dadosY, eixoX, eixoY)'''
 
-    n = regiao_subsidiado(dados)
-
-    print (n)
+    grafico_1 (dados)
+    grafico_2(dados)
+    
 
 main()
 

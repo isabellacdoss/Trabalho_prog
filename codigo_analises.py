@@ -303,7 +303,7 @@ def capitais(base):
     df = pd.DataFrame(capitais)
     df.insert(1,"Unidades_hab", lista)
 
-    return (df)
+    return (df.head(len(lista)))
 
 # Análise 6 - Valor financiado por região e ano
 
@@ -335,36 +335,44 @@ def subsidio_10_cidades(base):
     
     return(df_novo.head(10))
 
-# Análise 8 - Comparação entre o número de unidades habitacionais solicitadas por região por ano (2009 a 2023)
+# Análise 8 - Comparação entre o número de unidades habitacionais solicitadas pela região sudeste durante os anos de 2009 a 2023
 
 def unid_habit_regioes(base):
 
     import pandas as pd 
 
-    df = pd.DataFrame(base['Região'])
-    df.insert(1,'Quantidade_uni_habitacionais', base['Quantidade'])
+    df = pd.DataFrame({"Região":base["Região"]})
+    df.insert(1,'Quantidade', base['Quantidade'])
     df.insert(2, 'Ano', base['Ano'])
     
-    df_processado = df.groupby(["Região", "Ano"])["Quantidade_uni_habitacionais"].sum()
+    df_processado = df.groupby(["Região", "Ano"])["Quantidade"].sum().reset_index()
 
-    pd.set_option("display.max_row", 75)
+    sudeste= []
+    ano = []
 
-    print (df_processado)
+    for i in range (len(df_processado['Região'])):
 
-# Análise 9 - Identificação dos 10 municípios brasileiros que mais solicitaram financiamentos de unidades habitacionais 
+        if df.at[i,"Região"] == "Sudeste":
+            sudeste.append(df_processado.at[i,"Quantidade"])
+            ano.append(df_processado.at[i,"Ano"])
+
+    df_novo = pd.DataFrame({"Quantidade": sudeste, "Ano": ano})
+
+    return df_novo
+
+# Análise 9 - Identificação dos 10 municípios brasileiros que mais solicitaram unidades habitacionais 
 
 def municipio_financiamento(base): 
 
     import pandas as pd
-    df = pd.DataFrame(base['Município'])
+    df = pd.DataFrame({"Município":base['Município']})
     df.insert(1,'Quantidade', base['Quantidade'])
-    df.insert(2, 'Ano', base['Ano'])
         
     df_1 = df.groupby(["Município"])["Quantidade"].sum()
 
-    df2= df_1.sort_values(ascending=False)
+    df_2= df_1.sort_values(ascending=False).reset_index()
     
-    return df2.head(10)
+    return df_2.head(10)
 
 # Análise 10 - Valor subsidiado pelo governo por região e por ano 
 
@@ -465,7 +473,7 @@ def grafico_3(dados):
 
     mpl.bar(regiao, valor_fin, color = "yellow", label = "Valor financiado")  
     mpl.box(True) # faz aparecer uma margem ao redor do gráfico
-    mpl.title("Montente do Valor financiado por Região")
+    mpl.title("Montante do Valor financiado por Região")
 
     mpl.ylim (1000,260000000000)
     mpl.legend()
@@ -504,39 +512,41 @@ def grafico_4(dados):
   
 # Gráfico 5
 
-def grafico_5(dados):   # Modificar
+def grafico_5(dados):   
 
     # Tema:
-    # Tipo de Gráfico:
+    # Tipo de Gráfico: barras
 
-    df = capitais (dados)
+    df = capitais(dados)
 
-    capital = df["Capitais"]
+    # capital = df["Capitais"]
+    # corrigindo o nome das capitais
+
+    capit = ['Rio Branco', 'Maceió', 'Macapá', 'Manaus', 'Salvador', 'Fortaleza', 'Vitória', 'Goiânia', 'São Luís', 'Cuiabá', 'Campo Grande','Belo Horizonte', 'Belém', 'João Pessoa', 'Curitiba', 'Recife', 'Teresina', 'Rio de Janeiro', 'Natal', 'Porto Alegre', 'Porto Velho', 'Boa Vista', 'Florianópolis', 'São Paulo', 'Aracaju', 'Palmas', 'Brasília']
     quantidade = df["Unidades_hab"]
 
     import matplotlib.pyplot as mpl
 
-    mpl.figure(figsize = (15,10)) #define o tamanho da imagem 
-
-    mpl.barh(capital,quantidade, color = "green", label = "Quantidade")  
-    mpl.box(True) # faz aparecer uma margem ao redor do gráfico
+    mpl.title('Unidades habitacionais contratadas por capitais brasileiras')
+    mpl.plot(capit, quantidade)
+    mpl.plot(capit,quantidade, 'go')  #faz aparecer as bolinhas em cima do valor específico por ano 
+    mpl.plot(capit, quantidade, color = "brown")
     mpl.grid(True)
-    mpl.title("Unidades habitacionais contratadas por capitais dos estados brasileiros")
-    mpl.legend()
 
-    mpl.xlim (1000,4500000)
+    mpl.ylim(0, 4800000)  # para que os valores do gráfico fiquem nesse intervalo 
 
-    mpl.xlabel('Quantidade de unidades habitacionais contratadas')
-    mpl.ylabel('Capitais')
+    mpl.xlabel('Capitais')
+    mpl.ylabel('Unidades em milhões')
+    mpl.xticks(rotation= 45)
 
-    mpl.show() #usado para gerar o gráfico
+    mpl.show()
 
 # Gráfico 6
 
 def grafico_6(dados):
 
     # Tema:
-    # Tipo de Gráfico:
+    # Tipo de Gráfico: linhas
 
     import matplotlib.pyplot as mpl
 
@@ -587,13 +597,15 @@ def grafico_6(dados):
 
 def grafico_7(dados):
 
+    # Tema:
+    # Tipo de gráfico: barras
+
     import matplotlib.pyplot as mpl
 
     df = subsidio_10_cidades(dados)
-    municipios= df["Município"]
     valor = df["Valor"]
 
-    # Colocando os nomes corretos das cidades, pois apresentam erro nas letras que possuem acento
+    # Colocando os nomes 'corretos' das cidades, pois na base as letras que possuem acento apresentam erro
     cidades = ["São Paulo","João Pessoa","Rio de Janeiro","Uberlândia","Valparaíso de Goiás","Ribeirão Preto","Goiânia", "Feira de Santana", "Campo Grande","Águas Lindas de Goiás"]
 
     fig, ax = mpl.subplots()
@@ -603,28 +615,116 @@ def grafico_7(dados):
     ax.set(title="As 10 cidades que mais receberma subsídio do Governo durante 2009 e 2023", ylabel="Valor em bilhões")
     mpl.show()
 
-# Gráfico 8
+# Gráfico 8   
 
 def grafico_8(dados):
 
+    # Tema:
+    # Tipo de Gráfico: barras 
+
+    import matplotlib.pyplot as mpl
+
     df = unid_habit_regioes(dados)
+
+    valor = df["Quantidade"]
+    anos = df["Ano"]
+
+    mpl.figure(figsize = (15,10)) #define o tamanho da imagem 
+
+    mpl.bar(anos,valor,color = "red", label = "Unidades")  
+    mpl.box(True) # faz aparecer uma margem ao redor do gráfico
+    mpl.grid(True)
+    mpl.title("Unidades habitacionais contratadas pela Região Sudeste de 2009 a 2023")
+    mpl.legend()
+
+    mpl.ylim (0,230000)
+
+    mpl.ylabel('Quantidade de unidades habitacionais contratadas')
+    mpl.xlabel('Anos')
+
+    mpl.show() #usado para gerar o gráfico
 
 # Gráfico 9
 
 def grafico_9(dados):
 
+    # Tema:
+    # Tipo de Gráfico: barras
+
+    import matplotlib.pyplot as mpl
+
     df = municipio_financiamento(dados)
+
+    # Os nomes dos municípios foram inseridos manualmente, pois na base as letras que possuem acento apresentam erro.
+    municipio = ['São Paulo', 'Rio de Janeiro', 'João Pessoa', 'Uberlândia', 'Goiânia', 'Ribeirão Preto', 'Brasília', 'Campo Grande', 'Valparaíso de Goiás', 'Curitiba']
+    quantidade = df["Quantidade"]
+
+    mpl.figure(figsize = (15,12)) #define o tamanho da imagem 
+
+    mpl.barh(municipio, quantidade, color = "green", label = "Valor do financiamento")  
+    mpl.box(True) # faz aparecer uma margem ao redor do gráfico
+    mpl.title("OS 10 municípios brasileiros que mais solicitaram financiamento através do programa 'Minha Casa, Minha Vida'")
+    mpl.legend()
+
+    mpl.xlabel('Quantidade em milhares')
+    mpl.ylabel('Municípios')
+
+    mpl.show() #usado para gerar o gráfico
 
 # Gráfico 10
 
 def grafico_10(dados):
 
+    # Tema:
+    # Tipo de Gráfico: linhas
+
+    import matplotlib.pyplot as mpl
+
     df = regiao_subsidiado(dados)
 
+    anos = [2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023]   # os anos não foram extraídos da base, pois lá eles se repetiam
+
+    #plotando o gráfico
+    
+    mpl.figure(figsize = (25,20))
+
+    norte= []
+    nordeste= [] 
+    centro_oeste= []
+    sudeste= []
+    sul= []
+
+    for i in range (len(df['Região'])):
+
+        if df.at[i,"Região"] == "Norte":
+            norte.append(df.at[i,"Valor"])
+        elif df.at[i,"Região"] == "Nordeste":
+            nordeste.append(df.at[i,"Valor"])
+        elif df.at[i,"Região"] == "Centro-Oeste":
+            centro_oeste.append(df.at[i,"Valor"])
+        elif df.at[i,"Região"] == "Sudeste":
+            sudeste.append(df.at[i,"Valor"])
+        else:
+            sul.append(df.at[i,"Valor"])
+
+    mpl.figure(figsize = (25,20))
+    mpl.plot(anos, norte, color = "red", label = "Norte")
+    mpl.plot(anos, nordeste, color = "yellow",label = "Nordeste")
+    mpl.plot(anos, centro_oeste, color = "orange",label = "Centro-Oeste")
+    mpl.plot(anos, sudeste, color = "green",label = "Sudeste")
+    mpl.plot(anos, sul, color = "brown",label = "SuL")
+
+    mpl.ylim(100000000, 5000000000)  #valores do eixo y
+
+    mpl.title("Valor subsidiado por região e ano através do programa Minha Casa, Minha Vida")
+    mpl.grid(True)
+    mpl.box(True)
+    mpl.legend()
+    mpl.xlabel("Anos")
+    mpl.ylabel("Valor em bilhões de reais")
 
 
-
-
+    mpl.show()
 
 def main():
 
@@ -646,14 +746,42 @@ def main():
     dados = dados.assign(Valor_financiado = dados['Valor_financiado'].str.replace(',','.').astype(float))
     dados = dados.assign(Valor_subsidiado = dados['Valor_subsidiado'].str.replace(',','.').astype(float))
 
-    #opcoes = int(input("Escolha uma opção:\n 1 - "))
-
-    #ano = int(input("Digite o ano (2009 a 2023):\n"))
-    #regiao = input("Digite o nome da região (Norte, Nordeste, Centro-Oeste, Sudeste ou Sul):\n")
-
-    grafico_7(dados)
+    '''n_analise = int(input("Digite o número da análise: \n"))
     
+    if n_analise == 1:
+        grafico_1(dados)
+    elif n_analise == 2:
+        grafico_2(dados)
+    elif n_analise ==3:
+        grafico_3(dados)
+    elif n_analise ==4:
+        grafico_4(dados)
+    elif n_analise ==5:
+        grafico_5(dados)
+    elif n_analise ==6:
+        grafico_6(dados)
+    elif n_analise ==7:
+        grafico_7(dados)
+    elif n_analise ==8:
+        grafico_8(dados)
+    elif n_analise == 9:
+        grafico_9(dados)
+    else:
+        grafico_10(dados)'''
+    
+    grafico_9(dados)
+    
+    print(regiao_ano_valor_fin(dados))
+    
+    nome_arq = input("Digite o nome do arquivo: \n")
+    n_analise = input("Digite o n° da análise: \n")
+    dados_x = input("Dados de X: \n")
+    dados_y = input("Dados de Y: \n")
+    eixo_x = input("Eixo X: \n")
+    eixo_y = input("Eixo Y: \n")
 
+    gera_log (nome_arq, n_analise, dados_x, dados_y, eixo_x, eixo_y)
+    
 main()
 
 

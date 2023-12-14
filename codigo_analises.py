@@ -294,7 +294,8 @@ def capitais(base):
             lista27.append (base.at[i, 'Quantidade'])
                     
         else: 
-            lista26.append (base.at[i, 'Quantidade'])
+            if (base.at[i, "Município"]) == "Palmas":
+                lista26.append (base.at[i, 'Quantidade'])
 
     # As capitais estão na mesma ordem dos estados da função da análise 4
     capitais = {"Capitais":['Rio Branco', 'Maceiï¿½', 'Macapï¿½', 'Manaus', 'Salvador', 'Fortaleza', 'Vitï¿½ria', 'Goiï¿½nia', 'São Luï¿½s', 'Cuiabï¿½', 'Campo Grande','Belo Horizonte', 'Belï¿½m', 'Joï¿½o Pessoa', 'Curitiba', 'Recife', 'Teresina', 'Rio de Janeiro', 'Natal', 'Porto Alegre', 'Porto Velho', 'Boa Vista', 'Florianï¿½polis', 'Sï¿½o Paulo', 'Aracaju', 'Palmas', 'Brasï¿½lia']}
@@ -533,7 +534,7 @@ def grafico_5(dados):
     mpl.plot(capit, quantidade, color = "brown")
     mpl.grid(True)
 
-    mpl.ylim(0, 4800000)  # para que os valores do gráfico fiquem nesse intervalo 
+    mpl.ylim(0, 300000)  # para que os valores do gráfico fiquem nesse intervalo 
 
     mpl.xlabel('Capitais')
     mpl.ylabel('Unidades em milhões')
@@ -769,7 +770,7 @@ def main():
     else:
         grafico_10(dados)'''
     
-    grafico_9(dados)
+    grafico_5(dados)
     
     print(regiao_ano_valor_fin(dados))
     

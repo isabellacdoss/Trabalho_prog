@@ -29,7 +29,7 @@ A visualização dessas análises foi realizada por meio da criação de gráfic
 
 ## 🔗 Conclusão 
 
-Após a análise do dados dispostos na base "MCMV financiado" chegamos a conclusão que ...
+Após analisar os dados do conjunto "MCMV financiado" na base de dados "Dados Minha Casa, Minha Vida", concluímos que as informações disponíveis foram suficientes para a geração de novos dados e condução das análises necessárias. Contrariamente à hipótese i, observamos que a região Sudeste, e não as regiões Norte e Nordeste conforme inicialmente suposto, é a que mais recebe subsídios do governo. Essa constatação contradiz também a hipótese ii, que sugeria que a região Sudeste era a que menos recebia subsídios. Por outro lado, a hipótese iii foi confirmada, pois São Paulo emergiu como a capital e cidade que mais recebe subsídios e unidades habitacionais por meio do programa "Minha Casa, Minha Vida".
 
 
 

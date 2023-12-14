@@ -515,7 +515,7 @@ def grafico_4(dados):
 
 def grafico_5(dados):   
 
-    # Tema:
+    # Tema: Avaliação da disparidade na quantidade de unidades habitacionais contratadas pelas capitais dos estados brasileiros durante os anos de 2009 a 2023
     # Tipo de Gráfico: barras
 
     df = capitais(dados)
@@ -546,7 +546,7 @@ def grafico_5(dados):
 
 def grafico_6(dados):
 
-    # Tema:
+    # Tema: Valor financiado por região e ano
     # Tipo de Gráfico: linhas
 
     import matplotlib.pyplot as mpl
@@ -598,7 +598,7 @@ def grafico_6(dados):
 
 def grafico_7(dados):
 
-    # Tema:
+    # Tema: Identificação das 10 cidades que mais receberam subsídio do governo 
     # Tipo de gráfico: barras
 
     import matplotlib.pyplot as mpl
@@ -620,7 +620,7 @@ def grafico_7(dados):
 
 def grafico_8(dados):
 
-    # Tema:
+    # Tema: Comparação entre o número de unidades habitacionais solicitadas pela região sudeste durante os anos de 2009 a 2023
     # Tipo de Gráfico: barras 
 
     import matplotlib.pyplot as mpl
@@ -649,7 +649,7 @@ def grafico_8(dados):
 
 def grafico_9(dados):
 
-    # Tema:
+    # Tema: Identificação dos 10 municípios brasileiros que mais solicitaram unidades habitacionais
     # Tipo de Gráfico: barras
 
     import matplotlib.pyplot as mpl
@@ -676,7 +676,7 @@ def grafico_9(dados):
 
 def grafico_10(dados):
 
-    # Tema:
+    # Tema: Valor subsidiado pelo governo por região e por ano 
     # Tipo de Gráfico: linhas
 
     import matplotlib.pyplot as mpl

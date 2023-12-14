@@ -1,4 +1,0 @@
-Arquivo de log referente a analise: 4 intitulado:  quantidade_finan_estados
-Os dados da analise sao: 
-Para o eixo X ( estado ): dados =  ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO', 'DF']
-Para o eixo y ( valores ): dados =  [3037, 91836, 1372, 26464, 201136, 138976, 67719, 445158,  89701, 104815, 103275, 699513, 64168, 154347, 532971, 176833, 63344, 270560, 123881, 440762, 29244, 4714, 281194, 1494892, 81896, 19823, 55586]

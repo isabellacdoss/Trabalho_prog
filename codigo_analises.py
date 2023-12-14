@@ -747,7 +747,7 @@ def main():
     dados = dados.assign(Valor_financiado = dados['Valor_financiado'].str.replace(',','.').astype(float))
     dados = dados.assign(Valor_subsidiado = dados['Valor_subsidiado'].str.replace(',','.').astype(float))
 
-    '''n_analise = int(input("Digite o número da análise: \n"))
+    n_analise = int(input("Digite o número da análise: \n"))
     
     if n_analise == 1:
         grafico_1(dados)
@@ -768,23 +768,7 @@ def main():
     elif n_analise == 9:
         grafico_9(dados)
     else:
-        grafico_10(dados)'''
-    
-    grafico_5(dados)
-    
-    print(regiao_ano_valor_fin(dados))
-    
-    nome_arq = input("Digite o nome do arquivo: \n")
-    n_analise = input("Digite o n° da análise: \n")
-    dados_x = input("Dados de X: \n")
-    dados_y = input("Dados de Y: \n")
-    eixo_x = input("Eixo X: \n")
-    eixo_y = input("Eixo Y: \n")
-
-    gera_log (nome_arq, n_analise, dados_x, dados_y, eixo_x, eixo_y)
+        grafico_10(dados)
     
 main()
 
-
-            
-                       

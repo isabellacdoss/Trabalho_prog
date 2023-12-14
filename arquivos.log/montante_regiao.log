@@ -1,0 +1,4 @@
+Arquivo de log referente a analise: 3 intitulado:  montante_regiao
+Os dados da analise sao: 
+Para o eixo X ( regiao ): dados =  ["Centro-Oeste", "Nordeste", "Norte", "Sudeste", "Sul"]
+Para o eixo y ( valor_fin ): dados =  [6.379544e+10, 9.204024e+10, 1.294685e+10, 2.569841e+11, 1.130832e+11]

@@ -25,7 +25,7 @@ Realizamos análises mediante a extração de dados da base, empregando a lingua
 9)	Identificação dos 10 municípios brasileiros com maior demanda por unidades habitacionais;
 10)	Quantificação do valor subsidiado pelo governo por região e ano.
 
-A visualização dessas análises foi realizada por meio da criação de gráficos utilizando a biblioteca Matplotlib. Detalhes adicionais estão disponíveis no arquivo "Análise_dos_Dados_'MCMV_Financiado'.pdf".
+A visualização dessas análises foi realizada por meio da criação de gráficos utilizando a biblioteca Matplotlib. Detalhes adicionais estão disponíveis no arquivo "analise_de_banco_de_dados.pdf"
 
 ## 🔗 Conclusão 
 
